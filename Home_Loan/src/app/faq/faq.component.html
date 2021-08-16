@@ -1,0 +1,444 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="admin.aid">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/AdminHome',admin.aid]">INBANK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/AdminHome',admin.aid]">Home</a>
+            </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/AApplicationDetails',admin.aid]">Application Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/AdminFaq',admin.aid]">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/AdminFaq',admin.aid]">FAQ</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Logout
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/">Logout</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/UpdateAdminPassword',admin.aid]">Personal Details</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/UpdateAdminPassword',admin.aid]">Change Password</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="user.cid">
+  <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="['/Home',user.cid]">INBANK</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['/Home',user.cid]">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['/Faq',user.cid]">About Us</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['/Faq',user.cid]">FAQ</a>
+          </li>
+          </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav justify-content-center">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" [routerLink]="['/IncomeDetails',user.cid]">Apply for New Loan</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" [routerLink]="['/ApplicationDetails',user.cid]">Application Details</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" [routerLink]="['/EMICalculator',user.cid]">EMI Calculator</a>
+              </li>
+          </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav justify-content-end">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Logout
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" routerLink="/">Logout</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/UpdateUserPassword',user.cid]">Personal Details</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/UpdateUserPassword',user.cid]">Change Password</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+<span *ngIf="!admin.aid">
+<span *ngIf="!user.cid">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <a class="navbar-brand" routerLink="/">INBANK</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+              </li>
+              </ul>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav justify-content-center">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" routerLink="/IncomeDetails">Apply for New Loan</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" routerLink="/EMICalculator">EMI Calculator</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" routerLink="/Faq">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" routerLink="/Faq">FAQ</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav justify-content-end">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" routerLink="/AdminLogin">Admin Here!</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" routerLink="/RegisterUser">Register</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  <div class="jumbotron bg-dark text-white">
+      <h1 class="display-4">Please Login Or Register!</h1>
+      <p class="lead">Apply for Home Loan at best interest rate ever and give your family a Gift with Real Happiness</p>
+      <hr class="my-4">
+      <p>Your Tust Matters to us a LOT! because we are the one to give you a More Better Living Don't we?
+      </p>
+      <a class="btn btn-primary btn-md" href="#" role="button">Learn more</a>
+  </div>
+</span>
+</span>
+
+
+<div class="header">
+    <div class="container" style="width: 230px; margin-left: 0%;display: inline-block ;margin-top: 30px;">
+        <h1 class="title">FAQ Home Loans</h1>
+        <p class="title">Answers to all your doubts!</p>
+        <ul type="none" class="list-group" >
+            <li ><a class="list-group-item list-group-item-action {{state1}}" (click)=ChangeState1() id="menuitems"style="color: black;" href="#basics">Basics</a></li>
+            <li ><a class="list-group-item list-group-item-action {{state2}}" (click)=ChangeState2() id="menuitems"style="color: black;" href="#EMI">EMI</a></li>
+            <li ><a class="list-group-item list-group-item-action {{state3}}" (click)=ChangeState3() id="menuitems"style="color: black;" href="#requirements">Requirements</a></li>
+            <li ><a class="list-group-item list-group-item-action {{state4}}" (click)=ChangeState4() id="menuitems"style="color: black;" href="#payments">Payments And Tax-Benefits</a></li>
+            <li ><a class="list-group-item list-group-item-action {{state5}}" (click)=ChangeState5() id="menuitems"style="color: black;" href="#privacy">Privacy And Precautions</a></li>
+        </ul> 
+        
+    </div>
+    </div>
+    <div class="container" style="margin-right: 0%;">
+    <section>
+        
+    
+        <div class="faq__items">
+            <hr>
+            <ul type="none"id="basics" class="faq__group">
+                <li class="faq__title"><h2>Basics</h2></li>
+                <li class="faq__item">
+                    <div ><a class="faq__trigger"  href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What is a Home Loan?</div></a></div>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p >Home loan is a loan disbursed by a bank or financial institution (lender) to an individual specifically for buying a residential property. Here, the lender holds the title of property until the loan is paid back in full along with interest.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">How do I sign up for home loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>     Find out the various lenders who would be interested in providing you with a home loan based on the loan amount, income level and related criteria provided by you.
+        Compare the home loan offers based on factors such as interest rates, processing fees and other relevant factors.
+        Just choose and click to apply for the home loan with the specific provider with the click of a button.
+        Subsequently, your prospective lender will get in touch with you to get supporting documents and complete other formalities.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What do banks consider when granting a home loan?</div ></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Once repayment capacity determines your eligibility to apply for home loan, lenders consider the following factors: </p>
+    <ul><li> Income level of the applicant</li>
+    <li>Age  of the applicant</li>
+    <li> Qualification (stability and occupation continuity)</li>
+    <li>Resident status (maximum limit for an Indian resident differs from that of a non-resident)</li>
+    <li>Spouse’s income (household income is taken into account when there is a co-applicant)</li>
+    <li>No. of dependants (it is a measure of repayment capacity)</li>
+    <li>Credit history and score (past repayment track record)</li>
+    <li>Status of existing loans</li></ul>
+       
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">How do I repay my home loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>There are different ways to pay off your loan such as issuing post-dated cheques for the tenure of the home loan, getting the amount deducted automatically from your salary or by issuing standard instructions to the lender for ECS (Electronic Clearing System) wherein the EMI is automatically deducted from your bank every month.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What are the different type of home loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <ul><li> There are various types of home loans depending upon your specific requirement. Some of the key ones are as follows:</li>
+                    <li>Land purchase loans: These loans are granted to individuals for the purchase of land on which they intend to build a house.</li>
+                    <li> Home purchase loans: These are the most common type of home loans that is granted to individuals and they are granted for the purchase of an apartment.</li>
+                    <li>Home construction loan: This type of loan is granted to individuals for the construction of a house on a plot of land that is already owned by the applicant.</li>
+                    <li>Home Expansion/Extension Loan: This loan is specifically granted to individuals who want to expand their current home to include a new construction such as an additional floor, room, bathroom, etc.</li>
+                    <li>Home Improvement Loan: Existing home owners who lack sufficient funds to renovate their existing home can apply for this loan to upgrade their home with a new paint job, electrical wiring, water proofing, etc.</li>
+                    <li>Home conversion loans: Using this type of home loan, an existing home owner can add to their existing loan so that they can purchase a new house. This type of loan is only applicable to existing home owners.</li>
+                    <li>NRI Home Loans: These home loans are specifically designed to provide non-resident Indians with financing so that they can purchase a home in India.</li></ul>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What is fixed Rate home loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Fixed rate home loans are offered at a predetermined interest rate during the loan period and these remain unchanged during the loan period irrespective of market conditions. This can be a huge benefit when market volatility starts affecting interest rates. For instance, if the RBI increases interest rates on loans, then people with fixed rate home loan will not be affected by any increase or decrease in the market interest rates and the EMI amount will remain unchanged. This type of home loan is less popular these days.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What is floating Rate home loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>If the interest rate on the loan varies periodically over the loan tenure, then it is called a floating rate home loan. Lenders have their own base rate which determines the rate of interest charged on a home loan. The base rates of banks are revised from time to time based on RBI directives as well as other factors, which leads to an increase or decrease in the EMI amount payable.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+            </ul>
+    
+            <ul type="none" id="EMI" class="faq__group">
+                <li class="faq__title"><h2>EMI</h2></li>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">How does EMI work?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>EMI stands for Equated Monthly Installment. It includes repayment of the principal amount and payment of the interest on the outstanding amount of your home loan. A longer loan tenure (for a maximum period of 30 years) helps in reducing the EMI.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What is pre-EMI Interest?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>When banks sanction you a home loan, the EMI payments may not start immediately. In such a situation, the bank is liable to charge a pre-EMI interest on your loan. This interest is payable monthly from the time the loan is disbursed till the time the EMI payments start off. The pre-EMI interest amount is lower than the home loan EMI as the principal payment portion is excluded for pre-EMI interest payments.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white; text-decoration: none;">Is there any flexibility in EMI?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Some banks also offer their customers flexible repayment options. Here the EMIs are unequal. In step-up loans, the EMI is low initially and increases as years roll by (balloon repayment). In step-down loans, EMI is high initially and decreases as years roll by.
+    
+                    Step-up option is convenient for borrowers who are in the beginning of their careers. Step-down loan option is useful for borrowers who are close to their retirement years and currently make good money.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What is monthly reducing balances method??</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Borrowers benefit more from a loan that's calculated on a monthly reducing basis than on an annual basis. In case of monthly resets, interest is calculated on the outstanding principal balance for that month. The principal paid is deducted from the opening principal outstanding balance to arrive at the opening principal for the next month and interest is computed on the new, reduced principal outstanding. In case of annual resets, principal paid is adjusted only at the end of the year. Hence, you continue to pay interest on a portion of the principal that has been paid back to the lender.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">How does loan tenure affects the cost of loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>The longer the tenure of the loan, the lesser will be your monthly EMI outflow. Shorter tenures mean greater EMI burden, but your loan is repaid faster. If you have a short-term cash flow mismatch, your bank may increase the tenure of the loan, and your EMI burden comes down. But longer tenures mean payment of larger interest towards the loan and make it more expensive.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+            </ul>
+    
+            <ul type="none" id="requirements" class="faq__group">
+                <li class="faq__title"><h2>Requirements</h2></li>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What are the key charges associated with a home loan process?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <ul><li> Processing Fee- When applying for a loan, a fee is paid to the lender known as processing fee. The amount paid could be either a percentage of the loan amount or a fixed amount that is paid in lieu of carrying out the loan sanction formalities.</li>
+                    <li>Commitment Fee- It is essential to avail the loan within a stipulated time period after it is processed and sanctioned otherwise some financial institutions levy a commitment fee. By paying the commitment fee, you are assured that you can access the loan at the interest rate and for the tenure that was initially agreed on. Most banks no longer charge this fee.</li>
+                    <li> Pre-payment Charges- Banks/ financial institutions might charge a penalty if the entire loan amount is paid off before completion of the loan tenure. The penalty amount also known as foreclosure/pre-payment charges could be a maximum of 5% of the loan amount that is paid off before the completion of loan tenure.</li>
+                    <li>Miscellaneous charges- Documentation, stamp duty, credit bureau report issuance charges and consultant charges are generally considered as miscellaneous charges by few lenders.</li>
+                    </ul>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What documents do I need to submit with my home loan application? </div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <ul><li> Completed loan application form</li>
+                    <li>Passport size photographs</li>
+                    <li>Identity proof – PAN card/Passport/ DL/ Voters ID</li>
+                    <li>Residence proof- telephone or electricity bill/ passport/ voter ID / property tax receipt</li>
+                    <li>Bank statement for at least past 6 months and salary certificates/ latest acknowledged ITR</li>
+                    <li>Copy of plan approved for the proposed construction/extension</li>
+                    <li>Cost estimation/ valuation report from Bank’s (or finance company)  authorised surveyor/evaluator</li>
+                    <li>Allotment letter of housing board/ NOC of the society/Builder etc. as well as any other land use certificate/other</li></ul>
+                       
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">How do home loan requirements vary for an apartment and a plot of land?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>When you take a home loan for an apartment, you technically apply for a home purchase loan. This type of loan is the most common one that is provided to individuals and is eligible for tax benefits under section 24 and section 80C. In case you want to purchase a plot of land for building your house at a later date, you have to apply for a land purchase loan and there is currently no tax exemption benefit for this type of loan.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;"> What security will you have to provide?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>The security for a housing loan is typically a first mortgage of the property, normally by way of deposit of title deeds. Banks also sometimes ask for other collateral security as may be necessary. Some banks insist on margin / down payment (borrowers contribution to the creation of an asset) to be maintained / made also.
+    
+                    Collateral security assigned to your bank could be life insurance policies, the surrender value of which is set at a certain percentage to the loan amount, guarantees from solvent guarantors, pledge of shares/ securities and investments like KVP/ NSC etc. that are acceptable to your banker. Banks would also require you to ensure that the title to the property is free from any encumbrance. (i.e., there should not be any existing mortgage, loan or litigation, which is likely to affect the title to the property adversely).</p>
+              </div>
+                    </div> 
+                </li>
+            </ul>
+            <hr>
+            <ul type="none" id="payments" class="faq__group">
+                <li class="faq__title"><h2>Payments And Tax Benefits</h2></li>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">Is prepayment of home loan allowed?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Yes, one can repay the loan amount before completion of the scheduled loan tenure by making a lump sum payment towards paying off the loan. In such cases, the bank may decide to apply some penalties in the range of 2-3% of the principal amount outstanding. Some banks and NMFC (non-banking financial companies) do not charge any penalty on making prepayment of a home loan.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">Do you get a tax benefit on the loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Yes, home loan principal is part of Section 80C of the Income Tax Act. Under this section, an individual is entitled to tax deductions on the amount paid as repayment of the principal component on the housing loan. An amount up to Rs. 1.50 lakh can be claimed as tax deductions under Section 80C.</p>
+              </div>
+                    </div> 
+                </li>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">Is having a good credit record important in case of a home loan?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>A home loan is a long term loan (5 to 30 years tenure), hence lenders want to ensure that they will get their money back in the long term. Therefore, the loan sanctioning authority will definitely check your credit history before sanctioning a home loan to you. By having a good credit record/history you would be classified as a low-risk borrower and you may be able to get preferred (low) interest rates and waivers on various bank fees on the basis of your credit history.</p>
+              </div>
+                    </div> 
+                </li>
+            </ul>
+            <hr>
+            <ul type="none" id="privacy" class="faq__group">
+                <li class="faq__title"><h2>Privacy And Precautions</h2></li>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What precautions do you need to take if you are purchasing a property that is not a newly built one?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Ensure that the documents being provided to you are not colour photocopies. Check the internet for other modus operandi to fraud and ensure clear title to the asset. Seek advice only from authentic sources such as your bank.
+    
+                    Get the no encumbrance certificate to find the true title holder and if it is mortgaged to any financier. Obtain all tax papers to ensure that all documents are up to date.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">What should be your strategy in dealing with the banks?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p>Give yourself comfortable time. Do not hurry your purchase or loan in any case. Shopping around for a home loan will help you to get the best financing deal. Shopping, comparing, seeking clarification and negotiating with banks may save you thousands of rupees.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">How should i keep a check on interest rates?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p> Ask your lender about its current home loan interest rates and whether the rate is fixed or floating.  Remember that when interest rates in the economy go up so does the floating rates and hence the monthly re-payment.
+    
+                    If the rate quoted is a floating rate, ask how your rate and loan payment will vary, including the extent to which your loan payment will be reduced when rates go down by a certain percentage. Ask your lender to what index your floating home loan is referenced / linked and the periodicity of updation of that index. Also ask your bank whether the index is internal or external and how and where it is published.
+                    
+                    Ask about the loan’s annual percentage rates (APR). The APR takes into account not only the interest rate but also fees and certain other charges that you may be required to pay, expressed as a yearly rate. Banks are obliged to reveal the APR if requested for by the customer.</p>
+              </div>
+                    </div> 
+                </li>
+                <hr>
+                <li class="faq__item">
+                    <a class="faq__trigger" href="#0"><div style="width: 1260px;height: 40px; background-color: rgb(36, 122, 219);padding-top: 7px;color: white;text-decoration: none;">How to get the Best Deal?</div></a>
+                    <div class="faq__content">
+              <div class="text-component">
+                <p> Once you know what each bank has to offer in terms of rates, fees and down payments, negotiate for the best deal. Ask the lender to write down all the costs associated with the loan. Then ask if the bank will waive or reduce one or more of its fees or agree to a lower rate. Do make sure that the bank is not agreeing to lower one fee while raising another or to lower the rate while raising the fees. Ask for clarification in case you do not understand any particular term. All banks are obliged to explain the most important terms and conditions of the home loan in detail.
+    
+                    Once you are satisfied with the terms you have negotiated, please do obtain a written offer letter from the lender and keep a copy with you. Read the offer letter carefully before signing.</p>
+              </div>
+                    </div>
+                </li>
+                <hr>
+            </ul> 
+    
+            
+        </div> 
+    
+        <button type="submit" class="btn btn-primary" style="margin-left: 37px;">Close</button>
+    
+      <div class="faq__overlay" aria-hidden="true"></div>
+    </section>
+    </div>

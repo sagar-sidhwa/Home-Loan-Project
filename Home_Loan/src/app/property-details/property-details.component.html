@@ -1,0 +1,169 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="property.cid">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/Home',property.cid]">INBANK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/Home',property.cid]">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/Faq',property.cid]">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/Faq',property.cid]">FAQ</a>
+            </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/IncomeDetails',property.cid]">Apply for New Loan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/ApplicationDetails',property.cid]">Application Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/EMICalculator',property.cid]">EMI Calculator</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Logout
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/">Logout</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/UpdateUserPassword',property.cid]">Personal Details</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/UpdateUserPassword',property.cid]">Change Password</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<span *ngIf="property.cid">
+
+<br><br><br><br><br><br>
+<div class="card bg-light text-dark text-center container">
+    <div class="card-body">
+    <h1><i class="fas fa-coins"></i>Property Details</h1>
+    </div>
+</div>
+    <div class="container">
+        <div class="row ">
+        <div class="col-md-4 py-5 bg-primary text-white text-center ">
+        <div class=" ">
+            <div class="card-body">
+            <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+            <h2 class="py-3">Property Details</h2>
+            <p>Fill out your details to continue your application process!</p>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-8 py-5 border">
+        <h4 class="pb-4">Please fill your property details</h4>
+        <form  #PropertyForm="ngForm" (ngSubmit)="post_property(PropertyForm.value)">
+            <div class="form-row row g-2">
+            <div class="form-group col-md-6">
+                <label for="property.propertyName">Property Name</label>
+            </div>
+            <div class="form-group col-md-6">
+                <input name="propertyName" class="form-control" placeholder="Enter Your Property Name" type="text" [(ngModel)]="property.propertyName" #pname="ngModel" required minlength="3" pattern="^[a-zA-Z ]+$">
+                <div class="error" style="color: red;" *ngIf="pname.errors?.pattern">Property Name includes only character values!</div>
+                <div style="color: red;" class="error" *ngIf="pname.errors?.required && (pname.touched&&!pname.dirty)">This is a mandatory field!</div>
+                <div class="error" style="color: red;" *ngIf="pname.errors?.minlength">Property Name should have minimium 3 characters!</div>
+            </div>
+            </div>
+            <div class="form-row row g-2">
+            <div class="form-group col-md-6">
+                <label for="property.location">Property Location</label>
+            </div>
+            <div class="form-group col-md-6">
+                <input name="location" class="form-control" placeholder="Property Location" type="text" [(ngModel)]="property.location" required #plocation="ngModel" required minlength="3" pattern="^[a-zA-Z ]+$">
+                <div class="error" style="color: red;" *ngIf="plocation.errors?.pattern">Property Location includes only character values!</div>
+                <div style="color: red;" class="error" *ngIf="plocation.errors?.required && (plocation.touched&&!plocation.dirty)">This is a mandatory field!</div>
+                <div class="error" style="color: red;" *ngIf="plocation.errors?.minlength">Property Location should have minimium 3 characters!</div>
+            </div>
+            </div>
+            <div class="form-row row g-2">
+            <div class="form-group col-md-6">
+                <label for="property.amount">Amount of Property</label>
+            </div>
+            <div class="form-group col-md-6">
+                <input name="amount" class="form-control" placeholder="Property Value" type="number" [(ngModel)]="property.amount" required #pamt="ngModel" min="100000" minlength="6">
+                <div style="color: red;" class="error" *ngIf="pamt.errors?.required && (pamt.touched&&!pamt.dirty)">This is a mandatory field!</div>
+                <div class="error" style="color: red;" *ngIf="pamt.errors?.minlength">Sorry Your Minimum Property Value must be 100000!</div>
+                <div class="error" style="color: red;" *ngIf="pamt.errors?.min">Sorry Your Minimum Property Value be 100000!</div>
+                        
+            </div>
+            </div>
+            <br>
+            <div class="form-row row g-2">
+            <div class="form-group col-md-6"><button type="submit"  class="btn btn-primary" [disabled]="!PropertyForm.valid">Submit</button></div>
+            <div class="form-group col-md-6"><a [routerLink]="['/ApplicationDetails',property.cid]" class="btn btn-dark">Cancel</a></div>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    <br><br><br><br>
+</span>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!property.cid">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/">INBANK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/IncomeDetails">Apply for New Loan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/EMICalculator">EMI Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/Faq">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/Faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/AdminLogin">Admin Here!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/RegisterUser">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</nav>
+
+<span *ngIf="!property.cid">
+    <div class="jumbotron bg-dark text-white">
+        <h1 class="display-4">Please Login Or Register!</h1>
+        <p class="lead">Apply for Home Loan at best interest rate ever and give your family a Gift with Real Happiness</p>
+        <hr class="my-4">
+        <p>Your Tust Matters to us a LOT! because we are the one to give you a More Better Living Don't we?
+        </p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </div>
+</span>

@@ -1,0 +1,24 @@
+#menuitems:hover{
+    
+    font-size: larger;
+    color:white;
+}
+.text-component{
+    background-color:whitesmoke;
+}
+.header{
+    background-image: url(/assets/images/faq.jpg);
+    min-height: 440px;
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.title{
+    color: white;
+}
+.faq__content{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

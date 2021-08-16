@@ -1,0 +1,145 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="admin.aid">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/AdminHome',admin.aid]">INBANK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/AdminHome',admin.aid]">Home</a>
+            </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/AApplicationDetails',admin.aid]">Application Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/AdminFaq',admin.aid]">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/AdminFaq',admin.aid]">FAQ</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Logout
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/">Logout</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/UpdateAdminPassword',admin.aid]">Personal Details</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/UpdateAdminPassword',admin.aid]">Change Password</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<span *ngIf="admin.aid">
+
+<div>
+    <div class="row mt-5" >
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Users Application Details</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">View the Applications Verify the Details and Modify Status</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">If you want to Apply for new Application click on Apply for Loan</h6>
+                    <hr>
+                    <h2><a class="card-subtitle mb-2 btn btn-md text-white btn-primary" (click)=ViewDetails()>View Applications Assigned to Me!</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+
+<div *ngIf="iflag">
+<div class="container">
+    <span *ngFor="let a of applications">
+    <span *ngIf="application.aid==a.aid">
+    <span *ngFor="let d of documents">
+    <span *ngIf="d.cid==a.cid">
+    <span  *ngFor="let u of users">
+    <table class="table table-bordered table-striped">
+        <thead class="table-light d-print-none" *ngIf="d.cid==u.cid && tflag">
+            <tr>
+            <th>Application No</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>View Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="d.cid==u.cid">
+                <td>{{a.applicationNumber}}</td>
+                <td>{{u.firstName }} {{ u.middleName }} {{ u.lastName }}</td>
+                <td>{{ u.phoneNumber }}</td>
+                <td><button type="submit" class="offset-2 btn btn-outline-primary col-8" [routerLink]="['/Details',admin.aid,a.cid,a.inId,a.prId,a.lId,d.dId,a.applicationNumber]" >View Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+
+</div> 
+
+</div>
+
+<br><br><br><br>
+
+</span>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!admin.aid">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">INBANK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+            </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/Faq">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/Faq">FAQ</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/AdminLogin">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/RegisterAdmin">Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<span *ngIf="!admin.aid">
+    <div class="jumbotron bg-dark text-white">
+        <h1 class="display-4">Please Login Or Register!</h1>
+    </div>
+</span>
+

@@ -1,0 +1,186 @@
+<span *ngIf="!admin.aid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/">INBANK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/Faq">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/Faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/AdminLogin">Login as Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/RegisterAdmin">Register as Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>    
+</span>
+
+<br><br><br><br>
+<div class="card bg-light text-dark text-center container">
+    <div class="card-body">
+    <h1><i class="fas fa-file-upload"></i> Register Admin</h1>
+    </div>
+</div>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 py-5 bg-primary text-white text-center">
+                <div class="card-body">
+                    <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+                    <h2 class="py-3">Hello Admin</h2>
+                    <p>Bank Employee Can Register as a Admin</p>
+                </div>
+            </div>
+            <div class="col-md-8 py-5 border">
+                <form #RegisterAdminForm="ngForm" (ngSubmit)="post_api(RegisterAdminForm.value)">
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="FIRSE_NAME" class="form-label"><h4>First Name</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="text" id="firstName" name="firstName" placeholder="First Name" [(ngModel)]="admin.firstName" required #first="ngModel"  minlength="3" pattern="^[a-zA-Z]+$">
+                            <div style="color: red;" class="error" *ngIf="first.errors?.required && (first.touched&&!first.dirty)">This is a mandatory field!</div>
+                            <div class="error" style="color: red;" *ngIf="first.errors?.pattern">First name includes only character values!</div>
+                            <div class="error" style="color: red;" *ngIf="first.errors?.minlength">First name should have minimium 3 characters!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="MIDDLE_NAME" class="form-label"><h4>Middle Name</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="text" id="middleName" name="middleName" placeholder="Middle Name" [(ngModel)]="admin.middleName" pattern="^[a-zA-Z]+$" #middle="ngModel">
+                            <div class="error" style="color: red;" *ngIf="middle.errors?.pattern">Middle name includes only character values!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="LAST_NAME" class="form-label"><h4>Last Name</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="text" id="lastName" name="lastName" placeholder="Last Name" [(ngModel)]="admin.lastName" required pattern="^[a-zA-Z]+$" #last="ngModel">
+                            <div style="color: red;" class="error" *ngIf="last.errors?.required && (last.touched&&!last.dirty)">This is a mandatory field!</div>
+                            <div class="error" style="color: red;" *ngIf="last.errors?.pattern">Last name includes only character values!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="GENDER" class="form-label"><h4>Gender</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <select id="gender" name="gender" class="form-control" type="text"  [(ngModel)]="admin.gender" placeholder="Gender" class="form-control form-select" required #gen="ngModel">
+                                <option value="MALE" selected>Male</option>
+                                <option value="FEMALE">Female</option>
+                                <option value="OTHER">Others</option>
+                        </select>
+                        <div style="color: red;" class="error" *ngIf="gen.errors?.required && (gen.touched&&!gen.dirty)">This is a mandatory field!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="PHONE_NUMBER" class="form-label"><h4>Phone Number</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" [(ngModel)]="admin.phoneNumber" pattern="^[0-9]+$" required minlength="10" maxlength="10" #contact="ngModel">
+                            <div style="color: red;" class="error" *ngIf="contact.errors?.required && (contact.touched&&!contact.dirty)">This is a mandatory field!</div>
+                            <div class="error" style="color: red;" *ngIf="contact.errors?.pattern">contact number name includes only Numerical values!</div>
+                            <div class="error" style="color: red;" *ngIf="contact.errors?.minlength">contact number should have length of 10!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="EMAIL" class="form-label"><h4>Email</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="text" id="email" name="email" placeholder="Your Email" [(ngModel)]="admin.email" required #email="ngModel">
+                            <div class="error" style="color: red;" *ngIf="email.invalid && (email.touched&&!email.dirty)">This is a mandatory field!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="NATIONALITY" class="form-label"><h4>Nationality</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="text" id="nationality" name="nationality" placeholder="Your Nationality" [(ngModel)]="admin.nationality" required #nat="ngModel">
+                            <div style="color: red;" class="error" *ngIf="nat.errors?.required && (nat.touched&&!nat.dirty)">This is a mandatory field!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="BANK_NAME" class="form-label"><h4>Bank Name</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="text" id="bankName" name="bankName" placeholder="Bank Name" [(ngModel)]="admin.bankName" #bank="ngModel" required  minlength="3" pattern="^[a-zA-Z]+$">
+                            <div style="color: red;" class="error" *ngIf="bank.errors?.required && (bank.touched&&!bank.dirty)">This is a mandatory field!</div>
+                            <div class="error" style="color: red;" *ngIf="bank.errors?.pattern">Bank name includes only character values!</div>
+                            <div class="error" style="color: red;" *ngIf="bank.errors?.minlength">Bank name should have minimium 3 characters!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="PASSWORD" class="form-label"><h4>Password</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="password" id="password" name="password" [(ngModel)]="admin.password" required #pass="ngModel">
+                            <div style="color: red;" class="error" *ngIf="pass.errors?.required && (pass.touched&&!pass.dirty)">This is a mandatory field!</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-lg-2">
+                            <label for="CONFIRM_PASSWORD" class="form-label"><h4>Confirm Password</h4></label>
+                        </div>
+                        <div class="form-group col-lg-7">
+                            <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="admin.confirmPassword" required #cpassword="ngModel" PasswordValidator>
+                            <div style="color: red;" class="error" *ngIf="cpassword.errors?.required && (cpassword.touched&&!cpassword.dirty)">This is a mandatory field!</div>
+                            <span style="color: red;" *ngIf="admin.confirmPassword != admin.password">Password do not match! </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-md-6 py-3">
+                                <button type="submit" id="submit" name="submit" class="btn btn-lg btn-primary" [disabled]="!RegisterAdminForm.valid">Submit</button>
+                            </div>
+                            <div class="col-md-6 py-3">
+                                    <button type= "submit" id="cancel" name="cancel" class="btn btn-lg btn-danger" routerLink="/">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
